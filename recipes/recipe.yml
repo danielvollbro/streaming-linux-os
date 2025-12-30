@@ -20,6 +20,7 @@ modules:
       packages:
         - micro
         - starship
+        - plasma-workspace-x11
     remove:
       packages:
         - firefox
@@ -33,7 +34,6 @@ modules:
           # --- Core Apps ---
           - org.mozilla.firefox
           - org.gnome.Loupe
-          - plasma-workspace-x11
 
           # --- Gaming Stack ---
           - com.valvesoftware.Steam
