@@ -25,11 +25,14 @@ modules:
         - tmux
         - xclip
         - neovim
-        - nix
     remove:
       packages:
         - firefox
         - firefox-langpacks
+
+  - type: rpm-ostree
+    install:
+      - nix
 
   - type: script
     scripts:
