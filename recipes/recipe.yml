@@ -1,0 +1,70 @@
+---
+# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
+name: workstation-headless
+description: My declarative Cloud Native Gaming & Dev Rig
+
+base-image: ghcr.io/ublue-os/aurora-dx-nvidia-open
+image-version: 42
+
+modules:
+  - type: files
+    files:
+      - source: system
+        destination: /
+
+  - type: dnf
+    repos:
+      copr:
+        - atim/starship
+    install:
+      packages:
+        - micro
+        - starship
+        - edid-decode 
+        - libdisplay-info
+        - tmux
+        - xclip
+        - neovim
+        - nix
+    remove:
+      packages:
+        - firefox
+        - firefox-langpacks
+
+  - type: script
+    scripts:
+      - disable-sleep.sh
+
+  - type: default-flatpaks
+    configurations:
+      - notify: true
+        scope: system
+        install:
+          # --- Desktop Apps ---
+          - com.google.Chrome
+          - org.gnome.Loupe
+          - com.nextcloud.desktopclient.nextcloud
+          - com.bitwarden.desktop
+
+          # --- Development Stack ---
+          - com.visualstudio.code
+
+          # --- Gaming Stack ---
+          - com.valvesoftware.Steam
+          - net.lutris.Lutris
+          - com.heroicgameslauncher.hgl
+          - com.github.Matoking.protontricks
+          - com.usebottles.bottles
+
+  - type: systemd
+    system:
+      enabled:
+        - edid-kargs.service
+
+  - type: chezmoi
+    repository: "https://github.com/danielvollbro/workstation-dotfiles"
+    branch: main
+    all-users: true
+    file-conflict-policy: replace
+
+  - type: signing

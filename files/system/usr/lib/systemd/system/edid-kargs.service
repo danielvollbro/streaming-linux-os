@@ -1,0 +1,15 @@
+[Unit]
+Description=Configure Kernel Arguments for Headless Nvidia
+ConditionKernelCommandLine=!drm.edid_firmware
+After=network.target rpm-ostree-work.service
+Before=sddm.service gdm.service graphical.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/use-custom-edid.sh
+TimeoutSec=300
+RemainAfterExit=no
+StandardOutput=journal+console
+
+[Install]
+WantedBy=multi-user.target
