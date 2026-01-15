@@ -25,6 +25,7 @@ modules:
         - tmux
         - xclip
         - neovim
+        - cloud-utils-growpart
     remove:
       packages:
         - firefox
