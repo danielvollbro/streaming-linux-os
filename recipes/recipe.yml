@@ -30,10 +30,6 @@ modules:
         - firefox
         - firefox-langpacks
 
-  - type: rpm-ostree
-    install:
-      - nix
-
   - type: script
     scripts:
       - disable-sleep.sh
