@@ -4,7 +4,7 @@ name: workstation-headless
 description: My declarative Cloud Native Gaming & Dev Rig
 
 base-image: ghcr.io/ublue-os/aurora-dx-nvidia-open
-image-version: 42
+image-version: 43
 
 modules:
   - type: files
