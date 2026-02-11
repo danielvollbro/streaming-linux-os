@@ -48,6 +48,8 @@ modules:
 
           # --- Development Stack ---
           - com.visualstudio.code
+          - com.unity.UnityHub
+          - org.godotengine.Godot
 
           # --- Gaming Stack ---
           - com.valvesoftware.Steam
